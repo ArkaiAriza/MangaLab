@@ -1,0 +1,12 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@primaryColor: #101010;
+@secondaryColor: #FF8718;
+@pageBackground: #202020;
+
+@black: #101010;
+@grey: #202020;
+
+@secondaryBackground: #433423;
