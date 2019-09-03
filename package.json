@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^5.2.1",
+    "@craco/craco": "^5.4.0",
     "axios": "^0.19.0",
     "cpy-cli": "^2.0.0",
     "craco-less": "^1.9.0",

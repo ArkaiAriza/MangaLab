@@ -1,11 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { Image } from 'semantic-ui-react';
-import { LabelGroup } from './';
+import { Image } from "semantic-ui-react";
+import { LabelGroup } from "./";
+import { HoverInfo } from "./";
 
 const StyledCard = styled.div`
-  display: inline-block;
+  display: flex;
+  position: relative;
   justify-content: space-between;
   flex-direction: column;
   margin: 2em 1em;
@@ -35,6 +37,9 @@ const Title = styled.h2`
 `;
 
 class Card extends React.Component {
+  state = { hover: false };
+  hover = React.createRef();
+
   renderCategories() {
     /* return this.props.manga.c.map(c => {
       return (
@@ -50,19 +55,34 @@ class Card extends React.Component {
   }
 
   render() {
-    //console.log(this.props);
+    //console.log(this.state.hover);
     return (
-      <StyledCard>
+      <StyledCard
+        ref={this.hover}
+        onMouseEnter={() => this.setState({ hover: true })}
+        onMouseLeave={() => this.setState({ hover: false })}
+      >
         <StyledImage
           src={`https://cdn.mangaeden.com/mangasimg/${this.props.manga.im}`}
           onError={ev =>
             (ev.target.src =
-              'http://hwr.org.uk/wp-content/uploads/2016/11/placeholder-dark-600-400-729dad18518ecd2cd47afb63f9e6eb09.jpg')
+              "http://hwr.org.uk/wp-content/uploads/2016/11/placeholder-dark-600-400-729dad18518ecd2cd47afb63f9e6eb09.jpg")
           }
         />
         <TitleContainer>
           <Title>{this.props.manga.t}</Title>
         </TitleContainer>
+        {this.state.hover && (
+          <HoverInfo
+            id={this.props.manga.i}
+            right={
+              this.hover.current.getBoundingClientRect().x + 440 <=
+              window.innerWidth
+                ? true
+                : false
+            }
+          />
+        )}
       </StyledCard>
     );
   }

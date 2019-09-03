@@ -1,15 +1,15 @@
-import React from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { Container, Grid, Image } from 'semantic-ui-react';
+import React from "react";
+import axios from "axios";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { Container, Grid, Image } from "semantic-ui-react";
 
-import { Card } from './common/';
+import { Card } from "./common/";
 
-import MangaCard from './MangaCard';
+import MangaCard from "./MangaCard";
 
 const StyledContainer = styled.div`
-  display: block;
+  display: flex;
   flex-flow: row wrap;
   justify-content: center;
   padding: 60px;
@@ -17,14 +17,13 @@ const StyledContainer = styled.div`
 `;
 
 class Content extends React.Component {
-  state = { mangaList: [], im: '', page: 0, nItems: 23 };
+  state = { mangaList: [], im: "", page: 0, nItems: 23 };
 
   async componentDidMount() {
-    const res = await axios.post(
-      //url: 'https://www.mangaeden.com/api/list/0/?p=0&l=32'
-      'http://localhost:5000/filter',
-      { page: this.state.page, nItems: this.state.nItems }
-    );
+    const res = await axios.post("http://localhost:5000/filter", {
+      page: this.state.page,
+      nItems: this.state.nItems
+    });
     //console.log(res);
     this.setState({ mangaList: res.data });
   }
