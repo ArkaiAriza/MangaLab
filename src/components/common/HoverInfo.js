@@ -42,7 +42,7 @@ class HoverInfo extends React.Component {
     }
     return (
       <Info right={this.props.right}>
-        <div>{this.state.manga.t}</div>
+        <div style={{ color: "white" }}>{this.state.manga.title}</div>
       </Info>
     );
   }
